@@ -25,6 +25,10 @@ public class Node {
        	this.referenceToNextNode = referenceToNextNode;
     }
 
+    public Object getCargoReference() {
+	return cargoReference;
+    }
+
     /**
       @return a string representation of this instance
      */
@@ -32,7 +36,7 @@ public class Node {
         String result =
             cargoReference.toString()  // polymorphically use appropriately toString!
           + " id " // include a usually-unique identifier for this node
-          + super.toString()
+	  + super.toString()
           ;
 
         // Show rest of chain of nodes
