@@ -16,13 +16,13 @@ public class Node {
 		this.cargoReference = cargoReference;
     }
     
-	public Node( Object cargoReference, Node referenceToNextNode) {
-        /* For incremental development with the skeleton's UserOfNode,
-           postpone writing this constructor until after the accessors.
-           Then remove this comment, of course.
-         */
-		this(cargoReference);
-		this.referenceToNextNode = referenceToNextNode;
+    public Node( Object cargoReference, Node referenceToNextNode) {
+    /* For incremental development with the skeleton's UserOfNode,
+       postpone writing this constructor until after the accessors.
+       Then remove this comment, of course.
+     */
+       	this(cargoReference);
+       	this.referenceToNextNode = referenceToNextNode;
     }
 
     /**
@@ -42,10 +42,12 @@ public class Node {
         return result;
     }
 
-    // // classic accessor and mutator
-    // public Node getReferenceToNextNode() {
-    // }
+    // classic accessor and mutator
+    public Node getReferenceToNextNode() {
+	return referenceToNextNode;
+    }
 
-    // public void setReferenceToNextNode( Node referenceToNextNode) {
-    // }
+    public void setReferenceToNextNode( Node referenceToNextNode) {
+	this.referenceToNextNode = referenceToNextNode;
+    }
 }
