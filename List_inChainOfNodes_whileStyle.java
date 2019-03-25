@@ -17,15 +17,13 @@ public class List_inChainOfNodes_whileStyle{
       @return the number of elements in this list
      */
     public int size() {
-	if (headReference == null) {
-	    return 0;
+	Node head = headReference;
+	int count = 0;
+	while (head != null) {
+	    count++;
+	    head = headReference.getReferenceToNextNode();
 	}
-	else {
-	    Node head = headReference;
-	    List_inChainOfNodes_whileStyle newList = new List_inChainOfNodes_whileStyle();
-	    newList.headReference = head.getReferenceToNextNode();
-	    return newList.size() + 1;
-	}
+        return count;
     }
 
     
@@ -35,16 +33,13 @@ public class List_inChainOfNodes_whileStyle{
            # elements [element0,element1,element2,] 
       */
     public String toString() {
+	Node head = headReference;
 	String result = "[";
-	if (headReference == null) {
-	    result += "]";
+	while(head != null) {
+	    result += head;
+	    head = headReference.getReferenceToNextNode();
 	}
-	else {
-	   Node head = headReference;
-	   List_inChainOfNodes_whileStyle newList = new List_inChainOfNodes_whileStyle();
-	   newList.headReference = head.getReferenceToNextNode();
-	   result += head + "," + newList.toString();
-	}
+	result += "]";
 	return result;
     }
     

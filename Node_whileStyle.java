@@ -40,9 +40,12 @@ public class Node_whileStyle {
           ;
 
         // Show rest of chain of nodes
-        if( referenceToNextNode == null)
-             result += " [no next]";
-        else result += " --> " + referenceToNextNode;
+	Node_whileStyle nextNode = referenceToNextNode;
+        while(nextNode != null) {
+	    result += " --> " + nextNode;
+	    nextNode = nextNode.referenceToNextNode;
+	}
+	result += " [no next]";
         return result;
     }
 
