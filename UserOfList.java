@@ -25,5 +25,16 @@ public class UserOfList {
         }
         System.out.println( "populated list: " + list
                           + System.lineSeparator());
+
+	list.add(3, "d");
+	System.out.println( "populated list: " + list
+                          + System.lineSeparator());
+        Object a = list.set(3, "p");
+	System.out.println( "populated list: " + list + " replaced object: " + a
+                          + System.lineSeparator());
+
+	System.out.println("element 2 is " + list.get(2));
+
+	System.out.println("element 3: " + list.remove(3) + " has been removed. Here is the new list: " + list + System.lineSeparator());
     }
 }

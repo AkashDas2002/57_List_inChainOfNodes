@@ -34,18 +34,13 @@ public class List_inChainOfNodes{
        format:
            # elements [element0,element1,element2,] 
       */
-    public String toString() {
-	String result = "[";
-	if (headReference == null) {
-	    result += "]";
-	}
-	else {
-	   Node head = headReference;
-	   List_inChainOfNodes newList = new List_inChainOfNodes();
-	   newList.headReference = head.getReferenceToNextNode();
-	   result += head + "," + newList.toString();
-	}
-	return result;
+    public String toString() { //this is from solutionHolmes
+	String result = size() + " elements [";
+	for( Node node = headReference
+           ; node != null
+           ; node = node.getReferenceToNextNode() )
+            result += node.getCargoReference() + ",";
+        return result + "]";
     }
     
     
@@ -58,4 +53,68 @@ public class List_inChainOfNodes{
 	 headReference = new Node(val, prevHead);
          return true;
      }
+
+    public void add(int index, Object newValue) {
+	if (index == 0) {
+	    Node oldHead = headReference;
+	    headReference = new Node(newValue, oldHead);
+	}
+	else {
+	    Node node = headReference;
+	    for( int i = 0; i < index - 1; i++) {
+		node = node.getReferenceToNextNode();
+	    }
+	    Node ref = node.getReferenceToNextNode();
+	    node.setReferenceToNextNode(new Node(newValue, ref));
+        }
+    }
+
+    public Object set(int index, Object newValue) {
+	if (index == 0) {
+	    Node oldHead = headReference;
+	    headReference = new Node(newValue, oldHead.getReferenceToNextNode());
+	    return oldHead.getCargoReference();
+	}
+	else {
+	    Node node = headReference;
+	    for( int i = 0; i < index - 1; i++) {
+		node = node.getReferenceToNextNode();
+	    }
+	    Node ref = node.getReferenceToNextNode().getReferenceToNextNode();
+	    node.setReferenceToNextNode(new Node(newValue, ref));
+	    return node.getReferenceToNextNode().getCargoReference();
+	}
+    }
+
+
+    public Object get(int index) {
+	if (index == 0) {
+	    return headReference.getCargoReference();
+	}
+	else {
+	    List_inChainOfNodes newList = new List_inChainOfNodes();
+	    newList.headReference = headReference.getReferenceToNextNode();
+	    return newList.get(index -  1);
+	}
+	
+    }
+
+    public Object remove( int index) {
+	if (index == 0) {
+	    Object obj = get(0);
+	    headReference = headReference.getReferenceToNextNode();
+	    return obj;
+	}
+	else {
+	    Object obj = get(index);
+	    Node node = headReference;
+	    for( int i = 0; i < index - 1; i++) {
+		node = node.getReferenceToNextNode();
+	    }
+	    
+	    node.setReferenceToNextNode(node.getReferenceToNextNode().getReferenceToNextNode() );
+	    return obj;
+	}
+    }	
+	
 }
