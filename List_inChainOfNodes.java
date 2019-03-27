@@ -113,14 +113,15 @@ public class List_inChainOfNodes{
 	}
 	else {
 	    Object obj = get(index);
-	    Node node = headReference;
-	    for( int i = 0; i < index - 1; i++) {
-		node = node.getReferenceToNextNode();
-	    }
-	    
+	    Node node = iterate(index);   
 	    node.setReferenceToNextNode(node.getReferenceToNextNode().getReferenceToNextNode() );
 	    return obj;
 	}
+    }
+
+    public Node iterate(int index) {
+	Node node = headReference;
+	for( int i = 0; i < index - 1; i++, node = node.getReferenceToNextNode()) {}
+	return node;
     }	
-	
 }
