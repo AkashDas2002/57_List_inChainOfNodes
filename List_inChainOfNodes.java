@@ -49,8 +49,6 @@ public class List_inChainOfNodes{
       @return true, in keeping with conventions yet to be discussed
      */
      public boolean addAsHead( Object val) {
-	 // Node prevHead = headReference;
-	 //headReference = new Node(val, prevHead);
 	 add(0, val);
 	 return true;
      }
@@ -61,32 +59,13 @@ public class List_inChainOfNodes{
 	    headReference = new Node(newValue, oldHead);
 	}
 	else {
-	    Node node = headReference;
-	    for( int i = 0; i < index - 1; i++) {
-		node = node.getReferenceToNextNode();
-	    }
+	    Node node = iterate(index);
 	    Node ref = node.getReferenceToNextNode();
 	    node.setReferenceToNextNode(new Node(newValue, ref));
         }
     }
 
     public Object set(int index, Object newValue) {
-	/*
-	if (index == 0) {
-	    Node oldHead = headReference;
-	    headReference = new Node(newValue, oldHead.getReferenceToNextNode());
-	    return oldHead.getCargoReference();
-	}
-	else {
-	    Node node = headReference;
-	    for( int i = 0; i < index - 1; i++) {
-		node = node.getReferenceToNextNode();
-	    }
-	    Node ref = node.getReferenceToNextNode().getReferenceToNextNode();
-	    node.setReferenceToNextNode(new Node(newValue, ref));
-	    return node.getReferenceToNextNode().getCargoReference();
-	}
-	*/
 	Object a = remove(index);
 	add(index, newValue);
 	return a;
@@ -94,15 +73,7 @@ public class List_inChainOfNodes{
 
 
     public Object get(int index) {
-	if (index == 0) {
-	    return headReference.getCargoReference();
-	}
-	else {
-	    List_inChainOfNodes newList = new List_inChainOfNodes();
-	    newList.headReference = headReference.getReferenceToNextNode();
-	    return newList.get(index -  1);
-	}
-	
+	    return iterate(index+1).getCargoReference();	
     }
 
     public Object remove( int index) {
@@ -123,5 +94,29 @@ public class List_inChainOfNodes{
 	Node node = headReference;
 	for( int i = 0; i < index - 1; i++, node = node.getReferenceToNextNode()) {}
 	return node;
-    }	
+    }
+    
 }
+
+
+      
+	/* This is the old code for add
+	if (index == 0) {
+	    Node oldHead = headReference;
+	    headReference = new Node(newValue, oldHead.getReferenceToNextNode());
+	    return oldHead.getCargoReference();
+	}
+	else {
+	    Node node = headReference;
+	    for( int i = 0; i < index - 1; i++) {
+		node = node.getReferenceToNextNode();
+	    }
+	    Node ref = node.getReferenceToNextNode().getReferenceToNextNode();
+	    node.setReferenceToNextNode(new Node(newValue, ref));
+	    return node.getReferenceToNextNode().getCargoReference();
+	}
+	*/
+
+         // Old code for addAsHead:
+	 // Node prevHead = headReference;
+	 //headReference = new Node(val, prevHead);
