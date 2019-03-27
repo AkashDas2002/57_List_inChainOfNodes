@@ -49,9 +49,10 @@ public class List_inChainOfNodes{
       @return true, in keeping with conventions yet to be discussed
      */
      public boolean addAsHead( Object val) {
-	 Node prevHead = headReference;
-	 headReference = new Node(val, prevHead);
-         return true;
+	 // Node prevHead = headReference;
+	 //headReference = new Node(val, prevHead);
+	 add(0, val);
+	 return true;
      }
 
     public void add(int index, Object newValue) {
