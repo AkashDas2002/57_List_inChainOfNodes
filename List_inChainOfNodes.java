@@ -71,6 +71,7 @@ public class List_inChainOfNodes{
     }
 
     public Object set(int index, Object newValue) {
+	/*
 	if (index == 0) {
 	    Node oldHead = headReference;
 	    headReference = new Node(newValue, oldHead.getReferenceToNextNode());
@@ -85,6 +86,10 @@ public class List_inChainOfNodes{
 	    node.setReferenceToNextNode(new Node(newValue, ref));
 	    return node.getReferenceToNextNode().getCargoReference();
 	}
+	*/
+	Object a = remove(index);
+	add(index, newValue);
+	return a;
     }
 
 
